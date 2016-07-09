@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/menu_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+    </FrameLayout>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:clickable="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:id="@+id/layout_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical" />
+
+            <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_above="@+id/layout_bottom" 
+                >
+            </FrameLayout>
+        </RelativeLayout>
+
+        <fragment
+            android:id="@+id/navigation_drawer"
+            android:name="com.iphonmusic.slidemenu.fragment.SlideMenuFragment"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:layout_gravity="start" />
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>
