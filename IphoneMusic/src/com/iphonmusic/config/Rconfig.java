@@ -1,6 +1,7 @@
 package com.iphonmusic.config;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.iphonmusic.base.manager.BaseManager;
 
@@ -92,5 +93,8 @@ public class Rconfig {
 			// TODO: handle exception
 		}
 		return  fullName;
+	}
+	public void showToast(String text){
+		Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
 	}
 }

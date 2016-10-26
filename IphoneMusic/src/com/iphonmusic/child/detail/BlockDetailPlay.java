@@ -3,6 +3,16 @@ package com.iphonmusic.child.detail;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.iphonmusic.base.manager.BaseManager;
+import com.iphonmusic.config.Config;
+import com.iphonmusic.config.Instance;
+import com.iphonmusic.config.Rconfig;
+import com.iphonmusic.config.Utilities;
+import com.iphonmusic.entity.EntitySong;
+import com.iphonmusic.style.RoundedImageView;
+import com.iphonmusic.style.floatingbutton.FloatingActionButton;
+import com.iphonmusic.style.floatingbutton.FloatingActionsMenu;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -10,19 +20,13 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-
-import com.iphonmusic.base.manager.BaseManager;
-import com.iphonmusic.config.Config;
-import com.iphonmusic.config.Instance;
-import com.iphonmusic.config.Rconfig;
-import com.iphonmusic.config.Utilities;
-import com.iphonmusic.entity.EntitySong;
-import com.iphonmusic.style.floatingbutton.FloatingActionButton;
-import com.iphonmusic.style.floatingbutton.FloatingActionsMenu;
 
 public class BlockDetailPlay implements DelegateDetailPlay,
 		OnSeekBarChangeListener, OnCompletionListener {
@@ -36,6 +40,7 @@ public class BlockDetailPlay implements DelegateDetailPlay,
 	private TextView txt_start;
 	private TextView txt_end;
 	private SeekBar seekBar;
+	private RoundedImageView img_round;
 
 	private Handler mHandler = new Handler();;
 	private Utilities utilities = new Utilities();
@@ -80,6 +85,8 @@ public class BlockDetailPlay implements DelegateDetailPlay,
 				.id("img_previous"));
 		seekBar = (SeekBar) rootView.findViewById(Rconfig.getInstance().id(
 				"seekbar"));
+		img_round = (RoundedImageView) rootView.findViewById(Rconfig.getInstance().id(
+				"img_view"));
 		initFloatButton();
 		updateView();
 		BaseManager.getIntance().getPlayer().setOnCompletionListener(this);
@@ -89,6 +96,11 @@ public class BlockDetailPlay implements DelegateDetailPlay,
 
 		// Updating progress bar
 		updateProgressBar();
+		RotateAnimation anim = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+		anim.setInterpolator(new LinearInterpolator());
+		anim.setRepeatCount(Animation.INFINITE);
+		anim.setDuration(6000);
+		img_round.startAnimation(anim);
 	}
 
 	private void initFloatButton() {
@@ -142,11 +154,13 @@ public class BlockDetailPlay implements DelegateDetailPlay,
 							"ic_wishlist_add"));
 					EntitySong.deleteItemWishList(BaseManager.getIntance()
 							.getCurrentSong());
+					Rconfig.getInstance().showToast("Remove from wishlist success");
 				} else {
 					btn_to_wishlist.setIcon(Rconfig.getInstance().drawable(
 							"ic_wishlist_added"));
 					EntitySong.addItemWishList(BaseManager.getIntance()
 							.getCurrentSong());
+					Rconfig.getInstance().showToast("Add to wishlist success");
 				}
 			}
 		});

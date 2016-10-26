@@ -49,6 +49,8 @@ public class PhoneSlideMenuBlock implements SlideMenuDelegate {
 				"txt_feedback"));
 		img_expand = (ImageView) mView.findViewById(Rconfig.getInstance().id(
 				"img_expand"));
+		img_expand.setVisibility(View.INVISIBLE);
+		txt_feedback.setVisibility(View.INVISIBLE);
 		img_expand.setOnClickListener(new OnClickListener() {
 
 			@Override

@@ -13,6 +13,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.iphonmusic.base.controller.BaseController;
 import com.iphonmusic.base.fragment.BaseFragment;
 import com.iphonmusic.base.manager.BaseManager;
+import com.iphonmusic.child.feedback.FragmentFeedBack;
 import com.iphonmusic.child.musiconline.FragmentMusicOnline;
 import com.iphonmusic.config.Constant;
 import com.iphonmusic.config.Rconfig;
@@ -80,9 +81,22 @@ public class PhoneSlideMenuController extends BaseController {
 
 	public void initDataAdapter() {
 		addHome();
-		addZingMP3();
-		addNhacCuaTui();
-		addChiaSeNhac();
+		addFeedback();
+//		addZingMP3();
+//		addNhacCuaTui();
+//		addChiaSeNhac();
+	}
+	
+	private void addFeedback(){
+		int index = checkElement(Constant.ITEM_FEEDBACK);
+		if (index == -1) {
+			ItemNavigation item = new ItemNavigation();
+			item.setName(Constant.ITEM_FEEDBACK);
+			int id_icon = Rconfig.getInstance().drawable("ic_feedback");
+			Drawable icon = mContext.getResources().getDrawable(id_icon);
+			item.setDrawble(icon);
+			mItems.add(item);
+		}
 	}
 
 	private void addHome() {
@@ -178,6 +192,8 @@ public class PhoneSlideMenuController extends BaseController {
 		case Constant.ITEM_CHIASENHAC:
 			fragment = FragmentMusicOnline.newInstance(Constant.ITEM_CHIASENHAC);
 			break;
+		case Constant.ITEM_FEEDBACK:
+			fragment = FragmentFeedBack.newInstance();
 		default:
 			break;
 		}

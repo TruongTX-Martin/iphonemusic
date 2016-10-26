@@ -98,14 +98,15 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <ImageView
+    <com.iphonmusic.style.RoundedImageView
         android:id="@+id/img_view"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/layout_bottom"
         android:layout_margin="15dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_detail" />
+        android:src="@drawable/ic_detail"
+        />
 
     <RelativeLayout
         android:id="@+id/more_plugins"

@@ -8,6 +8,8 @@ public class Constant {
 	public static final String ITEM_SONGS = "Songs";
 	public static final String ITEM_WISHLIST = "Wishlist";
 	public static final String ITEM_FOLDERS = "Folders";
+	public static final String ITEM_FEEDBACK = "Feedback";
+	
 	public static final String ITEM_VIDEOS = "Videos";
 	public static final String TAG_WISHLISH = "wishlist";
 	public static final String TAG_PLAYLIST = "playlist";
