@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/imageViewAlbumArt"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_launcher" />
 
         <LinearLayout
@@ -31,8 +31,9 @@
                 android:gravity="center_vertical"
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
-                android:textSize="20dp" />
+                android:textColor="#000000"
+                android:paddingLeft="10dp"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/textAlbumName"
@@ -42,9 +43,10 @@
                 android:gravity="center_vertical"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:selectAllOnFocus="true"
+                android:paddingLeft="10dp"
                 android:singleLine="true"
                 android:textColor="#C0C0C0"
-                android:textSize="15dp" />
+                android:textSize="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,14 +61,14 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/ic_action_pause" />
+                android:background="@drawable/ic_play" />
 
             <Button
                 android:id="@+id/btnPlay"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/ic_action_play"
+                android:background="@drawable/ic_pause"
                 android:visibility="gone" />
 
             <Button
@@ -74,7 +76,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/ic_action_next" />
+                android:background="@drawable/ic_next" />
         </LinearLayout>
 
         <Button
